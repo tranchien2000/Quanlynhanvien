@@ -55,12 +55,7 @@ const UserSchema = new Schema(
       ],
       default: ["user"],
     },
-    careCategories: [
-        {
-            type: Schema.ObjectId,
-            ref: 'Category',
-        }
-    ]
+    careCategories: String
   },
   { timestamps: true }
 );

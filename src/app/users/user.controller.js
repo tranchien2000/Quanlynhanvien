@@ -2,7 +2,19 @@ import jwt from "jsonwebtoken";
 import config from "../../config/config.js";
 import User from "./user.model.js";
 import bcrypt from "bcryptjs";
+import _ from "lodash";
 class UserController {
+  hasAuthorization = function (roles) {
+    const _this = this;
+    return function (req, res, next) {
+        if (_.intersection(req.roles, roles).length) {
+          return next();
+        }
+        return res.status(403).send({
+          message: "User is not authorized",
+        });
+    };
+  };
   verifyToken = (req, res, next) => {
     let token = req.headers["x-access-token"];
 
@@ -15,6 +27,8 @@ class UserController {
         return res.status(401).send({ message: "Unauthorized!" });
       }
       req.userId = decoded.id;
+      req.username = decoded.username;
+      req.roles = decoded.roles
       next();
     });
   };
@@ -37,10 +51,9 @@ class UserController {
   };
   signup = async (req, res) => {
     const user = new User(req.body);
-    user.password = bcrypt.hashSync(req.body.password, 8),
-    await user.save();
+    (user.password = bcrypt.hashSync(req.body.password, 8)), await user.save();
     delete user.password;
-    res.jsonp(user)
+    res.jsonp(user);
   };
   signin = async (req, res) => {
     const user = await User.findOne({
@@ -51,7 +64,10 @@ class UserController {
       return res.status(404).send({ message: "User Not found." });
     }
 
-    const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+    const passwordIsValid = bcrypt.compareSync(
+      req.body.password,
+      user.password
+    );
 
     if (!passwordIsValid) {
       return res.status(401).send({
@@ -60,12 +76,11 @@ class UserController {
       });
     }
 
-    const token = jwt.sign({ id: user.id }, config.secret, {
-      expiresIn: 86400, 
+    const token = jwt.sign({ id: user.id, username: user.username, roles: user.roles }, config.secret, {
+      expiresIn: 86400,
     });
-
     res.jsonp({
-      id: user._id,
+      _id: user._id,
       username: user.username,
       email: user.email,
       accessToken: token,
