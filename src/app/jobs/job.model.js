@@ -15,7 +15,8 @@ const JobSchema = new Schema(
     degree: String,
     number: Number,
     career: {
-      type: String,
+      type: Schema.ObjectId,
+      ref:'Career',
       required: "Chưa có ngành nghề",
     },
     address: {
@@ -31,6 +32,14 @@ const JobSchema = new Schema(
       type: Schema.ObjectId,
       ref: "User",
     },
+    applyUsers: [{
+      type: Schema.ObjectId,
+      ref: "User",
+    }],
+    status: {
+      type: String,
+      enum: ['open', 'close']
+    }
   },
   { timestamps: true }
 );

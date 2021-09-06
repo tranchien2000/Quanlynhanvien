@@ -84,6 +84,7 @@ class UserController {
       username: user.username,
       email: user.email,
       accessToken: token,
+      displayName : user.displayName
     });
   };
 }

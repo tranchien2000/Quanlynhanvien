@@ -1,5 +1,6 @@
 import _ from 'lodash'
-// import 
+import mongoose from 'mongoose'
+const ObjectId = mongoose.Types.ObjectId
 class Helper {
   getObjectId = function (obj) {
     const id = _.get(obj, "_id") || obj;
