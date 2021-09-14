@@ -80,5 +80,31 @@ class JobController {
         return next(new Error(`Failed to load Job (${err})`));
       });
   };
+  applicationForm  = async (req, res) => {
+    const user = req.userId
+    const users = await Job.aggregate()
+    .match({
+      user: helper.getObjectId(user)
+    })
+    .lookup({
+      from: "users",
+      localField: "applyUsers",
+      foreignField: "_id",
+      as: "applyUser",
+    })
+    .unwind("$applyUser")
+    .project({
+      _id: 1,
+      description: 1,
+      applyUser: {
+        _id: 1,
+        displayName: 1,
+        cellphone: 1,
+        email:1 
+      },
+    })
+    .exec()
+    res.jsonp(users)
+  }
 }
 export default new JobController();
