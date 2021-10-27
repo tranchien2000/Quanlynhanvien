@@ -20,8 +20,11 @@
   },
   "homepage": "https://github.com/kimshinoh/backend-Job-seeking#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.21.2",
     "cors": "^2.8.5",
     "dayjs": "^1.10.6",
     "dotenv": "^10.0.0",
@@ -34,6 +37,7 @@
     "lodash": "^4.17.21",
     "mongoose": "^6.0.4",
     "morgan": "^1.10.0",
+    "vue-router": "^3.5.3",
     "winston": "^3.3.3"
   },
   "devDependencies": {
