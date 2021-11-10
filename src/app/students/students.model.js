@@ -13,6 +13,7 @@ const StudentSchema = new Schema(
         required: 'Chưa có tên'
     },
     birthday: Date,
+    gender: String,
     avgPointFirstSemester: Number,
     deleted: {
       type: Boolean,

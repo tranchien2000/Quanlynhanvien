@@ -1,9 +1,10 @@
 import Student from "./students.model.js";
 import errorHandler from "../errors/errors.controller.js";
 import _ from "lodash";
+import moment from 'moment';
 class StudentController {
   list = async (req, res) => {
-    const { id, name, startPoint, endPoint } = req.query;
+    const { id, name, startPoint, endPoint, finalYear } = req.query;
     const query = Student.find();
     query.where({
       deleted: {
@@ -31,6 +32,16 @@ class StudentController {
           $lte: endPoint,
         },
       });
+    }
+    if(finalYear){
+      const firstDate = moment().set('year', 2000).startOf('year').toDate()
+      const lastDate = moment().set('year', 2000).endOf('year').toDate()
+      query.where({
+        birthday: {
+          $gte: firstDate,
+          $lte: lastDate
+        }
+      })
     }
     query
       .lean()

@@ -5,24 +5,30 @@
       <b-col sm="1">
         <label for="input-small">Id:</label>
       </b-col>
-      <b-col sm="2">
+      <b-col sm="1">
         <b-form-input v-model="params.id" size="sm"></b-form-input>
       </b-col>
       <b-col sm="1">
         <label for="input-small">Name:</label>
       </b-col>
-      <b-col sm="2">
+      <b-col sm="1">
         <b-form-input v-model="params.name" size="sm"></b-form-input>
       </b-col>
       <b-col sm="1">
         <label for="input-small">Avg:</label>
       </b-col>
       <b-col sm="1">
-        <b-form-input type="number" v-model="params.startPoint" size="sm"></b-form-input>
+        <b-form-input type="text" v-model="params.startPoint" size="sm"></b-form-input>
       </b-col>
       -
       <b-col sm="1">
-        <b-form-input type="number" v-model="params.endPoint" size="sm"></b-form-input>
+        <b-form-input type="text" v-model="params.endPoint" size="sm"></b-form-input>
+      </b-col>
+       <b-col sm="1">
+        <label for="input-small">Final-year Student :</label>
+      </b-col>
+      <b-col sm="1">
+        <b-form-checkbox type="checkbox" v-model="params.finalYear" size="sm"></b-form-checkbox>
       </b-col>
       <b-col sm="1">
         <b-button variant="success" v-on:click="refreshStudents(params)">Search</b-button>
@@ -36,6 +42,7 @@
             <tr>
               <th>Student Id</th>
               <th>Name</th>
+              <th>Gender</th>
               <th>Birthday</th>
               <th>Avg Point</th>
               <th>&nbsp;</th>
@@ -45,6 +52,7 @@
             <tr v-for="student in students" :key="student._id">
               <td>{{ student.studentId }}</td>
               <td>{{ student.name }}</td>
+              <td>{{ student.gender }}</td>
               <td>{{ student.birthday | momentDate("DD/MM/YYYY") }}</td>
               <td>{{ student.avgPointFirstSemester }}</td>
               <td class="text-right">
@@ -78,13 +86,17 @@
             <b-form-group label="Name">
               <b-form-input type="text" v-model="model.name"></b-form-input>
             </b-form-group>
+            <b-form-group label="Gender">
+              <b-form-select v-model="model.gender" :options="genders"></b-form-select>
+            </b-form-group>
             <b-form-group label="Birthday">
-              <date-picker v-model="model.birthday" valueType="format"></date-picker>
+              <date-picker style="width:100%" v-model="model.birthday" valueType="format"></date-picker>
             </b-form-group>
             <b-form-group label="AvgPoint">
               <b-form-input
-                type="number"
+                type="text"
                 v-model="model.avgPointFirstSemester"
+                placeholder="10.00"
               ></b-form-input>
             </b-form-group>
             <div>
@@ -107,7 +119,8 @@ export default {
       loading: false,
       students: [],
       model: {},
-      params: {}
+      params: {},
+      genders: ['Nam', 'Nữ', 'Khác']
     };
   },
   async created() {
