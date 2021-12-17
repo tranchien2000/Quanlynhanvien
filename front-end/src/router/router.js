@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
-import StudentManager from '@/components/StudentManager'
+import EmployeeManager from '@/components/EmployeeManager'
 Vue.use(Router)
 
 let router = new Router({
@@ -13,9 +13,9 @@ let router = new Router({
       component: Hello
     },
     {
-      path: '/student-manager',
-      name: 'StudentManager',
-      component: StudentManager,
+      path: '/employee-manager',
+      name: 'EmployeeManager',
+      component: EmployeeManager,
     }
   ]
 })

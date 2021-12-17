@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "yarn serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -16,6 +17,7 @@
     "moment": "^2.29.1",
     "vue": "^2.6.11",
     "vue-router": "^3.5.3",
+    "vue2-datatable-component": "^2.3.1",
     "vue2-datepicker": "^3.10.2"
   },
   "devDependencies": {

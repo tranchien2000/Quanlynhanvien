@@ -1,5 +1,1 @@
-import('../app/career/career.model.js')
-import('../app/categories/categories.model.js')
-import('../app/jobs/job.model.js')
-import('../app/students/students.model.js')
-import('../app/users/user.model.js')
+import('../app/employees/employees.model.js')

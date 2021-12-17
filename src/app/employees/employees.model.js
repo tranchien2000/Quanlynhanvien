@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const StudentSchema = new Schema(
+const EmployeeSchema = new Schema(
   {
-    studentId: {
+    code: {
         type: String,
         required: 'Chưa có mã',
         unique: true
@@ -14,7 +14,10 @@ const StudentSchema = new Schema(
     },
     birthday: Date,
     gender: String,
-    avgPointFirstSemester: Number,
+    position: String,
+    salary: Number,
+    email: String,
+    cellphone: String,
     deleted: {
       type: Boolean,
       default: false
@@ -23,4 +26,4 @@ const StudentSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Student", StudentSchema);
+export default mongoose.model("Employee", EmployeeSchema);
