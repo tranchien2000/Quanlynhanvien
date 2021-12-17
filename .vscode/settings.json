@@ -1,40 +1,40 @@
-// // Place your settings in this file to overwrite default and user settings.
-// {
-//   "files.exclude": {
-//     "**/.git": true,
-//     "**/.svn": true,
-//     "**/.hg": true,
-//     "**/.DS_Store": true,
-//     "public/uploads/**": true,
-//     "public/lib/**": true,
-//     "**/node_modules/**": true,
-//     "packages": true
-//   },
-//   "files.watcherExclude": {
-//     "**/.git/objects/**": true,
-//     "**/.git/subtree-cache/**": true,
-//     "**/node_modules/*/**": true,
-//     "public/uploads/**": true,
-//     "public/lib/**": true,
-//     "packages": true
-//   },
-//   "relativePath.ignore": [
-//     "**/node_modules/**",
-//     "**/public/lib/**",
-//     "**/public/uploads/**",
-//     "**/*.dll",
-//     "**/obj/**",
-//     "**/objd/**",
-//     "**/dist/**",
-//     "packages"
-//   ],
-//   "eslint.enable": true,
-//   "workbench.colorCustomizations": {
-//     "activityBar.background": "#46ac26",
-//     "activityBar.border": "#46ac26",
-//     "activityBar.foreground": "#ff0000",
-//     "activityBar.inactiveForeground": "#073bca"
-//   },
-//   "editor.cursorSmoothCaretAnimation": true,
+// Place your settings in this file to overwrite default and user settings.
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "public/uploads/**": true,
+    "public/lib/**": true,
+    "**/node_modules/**": true,
+    "packages": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "public/uploads/**": true,
+    "public/lib/**": true,
+    "packages": true
+  },
+  "relativePath.ignore": [
+    "**/node_modules/**",
+    "**/public/lib/**",
+    "**/public/uploads/**",
+    "**/*.dll",
+    "**/obj/**",
+    "**/objd/**",
+    "**/dist/**",
+    "packages"
+  ],
+  "eslint.enable": true,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#46ac26",
+    "activityBar.border": "#46ac26",
+    "activityBar.foreground": "#ff0000",
+    "activityBar.inactiveForeground": "#073bca"
+  },
+  "editor.cursorSmoothCaretAnimation": true,
   
-// }
+}

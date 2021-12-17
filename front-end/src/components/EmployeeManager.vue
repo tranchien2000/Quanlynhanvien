@@ -44,7 +44,7 @@
                   >Edit</a
                 >
                 -
-                <a href="#" @click.prevent="deleteStudent(employee._id)"
+                <a href="#" @click.prevent="deleteEmployee(employee._id)"
                   >Delete</a
                 >
               </td>
