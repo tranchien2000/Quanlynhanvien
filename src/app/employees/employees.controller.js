@@ -1,7 +1,9 @@
 import Employee from "./employees.model.js";
 import errorHandler from "../errors/errors.controller.js";
 import _ from "lodash";
-import moment from 'moment';
+import expressAsyncHandler from "express-async-handler";
+import moment from "moment";
+import shiftReports from "../shiftreports/shiftreport.controller.js";
 class EmployeeController {
   list = async (req, res) => {
     const { keyword } = req.query;
@@ -11,18 +13,19 @@ class EmployeeController {
         $ne: true,
       },
     });
-    if(keyword){
+    if (keyword) {
       query.or([
         {
           code: {
             $regex: keyword,
-          }
-        }, {
+          },
+        },
+        {
           name: {
             $regex: keyword,
-          }
-        }
-      ])
+          },
+        },
+      ]);
     }
     query
       .lean()
@@ -62,5 +65,15 @@ class EmployeeController {
     await employee.save();
     res.jsonp("OK");
   };
+  salary = async (req, res) => {
+    const employee = req.employee;
+    const salary = await shiftReports.calculateSalary(employee._id);
+    res.jsonp({ ...employee._doc, salary });
+  };
+  come = expressAsyncHandler(async (req, res) => {
+    const { code } = req.body;
+    await shiftReports.come(code);
+    res.send("OK");
+  });
 }
 export default new EmployeeController();

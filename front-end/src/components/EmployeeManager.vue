@@ -47,6 +47,10 @@
                 <a href="#" @click.prevent="deleteEmployee(employee._id)"
                   >Delete</a
                 >
+                - 
+                <a href="#" @click.prevent="salary(employee._id)"
+                  >Confirm Salary</a
+                >
               </td>
             </tr>
           </tbody>
@@ -140,6 +144,17 @@ export default {
         }
         await api.deleteEmployee(_id);
         await this.refreshEmployees();
+      }
+    },
+    async salary(_id) {
+      if (confirm("Are you sure you want to confirm this Employee's salary?")) {
+        api.getSalary(_id)
+        .then((res) => {
+          alert(res.salary)
+        }).catch((err) => {
+          alert(err.response.data.message);
+        })
+        
       }
     },
   },

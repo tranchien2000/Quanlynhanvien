@@ -30,5 +30,11 @@ export default {
   },
   deleteEmployee (id) {
     return this.execute('delete', `/api/employees/${id}`)
+  },
+  getSalary(id){
+    return this.execute('get', `/api/employees/${id}/salary`)
+  },
+  come(code){
+    return this.execute('post', `/api/employees/come`, {code})
   }
 }

@@ -7,6 +7,8 @@
         <b-navbar-nav>
           <b-nav-item to="/">Home</b-nav-item>
           <b-nav-item to="/employee-manager">Employee Manager</b-nav-item>
+          <b-nav-item to="/shift-report">Check</b-nav-item>
+
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
